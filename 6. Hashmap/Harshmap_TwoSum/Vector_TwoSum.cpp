@@ -1,0 +1,25 @@
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> result (2);
+        for (int i = 0; i<nums.size(); i++){
+            for (int j=i+1; j<nums.size(); j++){
+                if ((nums[i] + nums[j]) == target){
+                    result[0]=i;
+                    result[1]=j;
+                }
+            }
+        }
+        return result;
+    }
+};
+
+int main(){
+    Solution sol;
+    vector <int> nums = {1, 3, 2, 5, 1, 3, 2};
+    int target = 9;
+    sol.twoSum(nums, target);
+}
