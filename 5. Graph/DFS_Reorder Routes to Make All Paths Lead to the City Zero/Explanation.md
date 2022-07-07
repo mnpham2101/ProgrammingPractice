@@ -45,7 +45,7 @@ Submissions
 91,560
 ```
 
-# Solution: 
+# Solution: DFS with recursive implementation
 ## Problem Analysis:
 * Special cases:
   * If there is only city `0`: the ans is 0.

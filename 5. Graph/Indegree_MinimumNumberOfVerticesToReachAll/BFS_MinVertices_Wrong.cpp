@@ -35,7 +35,7 @@ class Solution {
         }
         
         for (int verticle = 0; verticle <n ; verticle++){
-            if (visited[verticle] == false){                        //BUG: this doesn't give minimum number 
+            if (visited[verticle] == false){                        //BUG: this doesn't give minimum number TC 3  [[1,2],[1,0],[0,2]]
                 dfs(edges, verticle);
                 result.push_back(verticle);
             }

@@ -16,7 +16,7 @@ Output: 4
 Explanation: The network rank of cities 0 and 1 is 4 as there are 4 roads that are connected to either 0 or 1. The road between 0 and 1 is only counted once. For the pair {2, 3}, the network rank is 3. For the pair {0,3} the network rank is 3.
 ```
 
-# Solution: DFS
+# Solution 1: DFS
 ## Problem Analysis:
 * is there "disjoined network"? 
 ## Algorithm:
@@ -28,7 +28,7 @@ Explanation: The network rank of cities 0 and 1 is 4 as there are 4 roads that a
         * compared with max value
     * add neighbor to dfsStack to check the next node
 
-# Solution: use double for loop.
+# Solution 2: use double for loop.
 ## Algorithm:
 * create 2d array `adjList` to store the connections each node has. `row: node, col: the adjacent nodes`. The number of connections is the number of col for each row
 * instead of using DFS to get the next node, simply use double for loop the get any pair of nodes. 

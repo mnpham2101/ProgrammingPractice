@@ -33,6 +33,8 @@ grid1[i][j] and grid2[i][j] are either 0 or 1.
 ```
 
 # Solution:
+
+## Algorithm:
 * Run BFS1 to mark all islands on Grid1 as `2`.
 * Run BFS2 to check if the island cells at a coordinates on Grid2 has the value `2` on Grid1
     * use `bool subIsland` to mark if the island on Grid2 is a subisland or not.
@@ -57,4 +59,4 @@ grid1[i][j] and grid2[i][j] are either 0 or 1.
     The 2 sub-islands are at left corner `[4][0]` and right corner `[4][4]
     ```
 
-    * each BFS2 run, while the stack is not empty, processes a single island.
+    * each BFS2 run, while the stack is not empty, processes a single sub-island.
