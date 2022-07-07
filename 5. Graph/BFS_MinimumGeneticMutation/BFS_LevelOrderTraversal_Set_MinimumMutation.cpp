@@ -33,6 +33,7 @@ public:
         bfsQueue.push(start);
              
         while (!bfsQueue.empty()){
+            /* LEVEL-ORDERED-TRAVERSAL */
             int n = bfsQueue.size(); 
             result++;                               // for each valid mutate, increment counting
             // Step 3.1: for every item already in bfsQueue, mutate them 
