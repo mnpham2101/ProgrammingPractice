@@ -57,8 +57,9 @@ target and deadends[i] consist of digits only.
 1. Run a single BFS:
     * **level order traversal**: 
         * push `0000` to `bfsQueue`
-        * at each level: push in all the nodes in, then process the neighbor, and then pop out all the nodes at the same levels 
-        * turn count is incremented after each level.
+        * at each level: save the level size
+        * at each level: push in all the nodes in, then process the neighbor, and then pop out all the nodes at the same levels; 
+        * turn count is incremented after each level, when all node at the same level have been popped.
         ```
         bfsQueue.push("0000");
         while (!bfsQueue.empty()){
@@ -82,7 +83,7 @@ target and deadends[i] consist of digits only.
     * return `turn[curr]` if `curr == target`
     * if bfsQueue is empty, return -1; 
     
-1. make generateNextLock(curr) function:
+2. make generateNextLock(curr) function:
     * loop through 4 wheels, where index of wheels `i` is also index of characters in the lock combination.
     * use assignment to change value of the lock combination when turning each wheel
         * forward turn: `next[i] = next[i] + 1` where is the index   
