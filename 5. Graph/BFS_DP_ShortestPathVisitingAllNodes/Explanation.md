@@ -35,32 +35,6 @@ The input graph is always connected.
     * Thus multiple BFS/DFS run for different nodes result in a shortest via the starting node only. The final answer is the shortest of all. 
 * There is no disconnected node, as implicitly stated in the problem description.
 * The path can revisit a node, reuse an edge many times. Is there a way to prevent infinitive loop? 
-    * Use math to count the path, instead of incrementing the count when the nodes are visited.
-    * For each level, from top node to child nodes, the total path would be `count = 2*n-1`;
-    * For example: In ![image info](./1.png). The top node `0` is connected to 3 node, the total path would be `count = 2*3 -1 = 65`.
-    * If we rearrange the graph and let 1 as the top node, we have ![image info](./3.png), the path length is then: `count = 1 + 2*2-1 = = 4 = path length from 1 to zero + path length from zero to 2 and 3`.
-    * We still mark the nodes as visited when each BFS run visit a node. 
+    
 ## ALgorith:
-* *Construct graph*:
-    * Current Nodes: mark each current node visited.
-    * Neighbor nodes: 
-        * for each row of `graph` is a vector `adjList` containing adjacent nodes to the node defined by row index.
-        * increment `count += 2 * adjList.size() -1`
-* run BFS by level  
-```
-bfsQueue.push(node);
-while (!bfsQueue.empty()){
-    int n = bfsQueue.size();         // the size of bfsQueue is the number of nodes at the same level
-    int count = 0;
-    // count is increments once at each level
-    count + = 2 * graph[bfsQueue.front()].size() - 1;           
-    for (int i = 0; i<n; i++){
-        int curr = bfsQueue.front();
-        // more bfs logic
-        
-        // add children node to bfsQueue
-    }
-}
- 
 
-```
