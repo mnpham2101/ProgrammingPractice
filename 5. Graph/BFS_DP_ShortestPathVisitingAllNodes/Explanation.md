@@ -35,6 +35,6 @@ The input graph is always connected.
     * Thus multiple BFS/DFS run for different nodes result in a shortest via the starting node only. The final answer is the shortest of all. 
 * There is no disconnected node, as implicitly stated in the problem description.
 * The path can revisit a node, reuse an edge many times. Is there a way to prevent infinitive loop? 
-    
-## ALgorith:
+* Special case: `graph.size()==1` then `ans = 0` why??????
+## ALgorithm:
 
