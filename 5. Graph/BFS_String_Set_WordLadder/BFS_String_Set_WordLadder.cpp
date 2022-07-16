@@ -50,15 +50,12 @@ public:
                             cout<<"find endWord "<<next<<" count "<<count<<endl;
                             count++;
                             return count;
-                        }
-                            
+                        }     
                     }
                 }    
             }
             count++;
-                
         }
-        
         return 0;   // if there is no possible transformation
     }
 };
