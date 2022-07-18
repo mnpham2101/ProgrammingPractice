@@ -1,0 +1,2 @@
+# Explanation: Using ON Versus WHERE Clauses to Combine and Filter Data in PostgreSQL Joins
+Source: https://www.pluralsight.com/guides/using-on-versus-where-clauses-to-combine-and-filter-data-in-postgresql-joins
