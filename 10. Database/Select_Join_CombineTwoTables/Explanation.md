@@ -63,3 +63,24 @@ Output:
 * Explanation: 
 There is no address in the address table for the personId = 1 so we return null in their city and state.
 addressId = 1 contains information about the address of personId = 2.
+
+# Solution: 
+* A full join table will look like this: 
+```
++----------+-----------+----------+---------------+------------+
+| personId | firstName | lastName | city          | state      |
++----------+-----------+----------+---------------+------------|
+| 1        | Allen     | Wang     | Null          | Null       |       left join will capture personId1 and personId2
+| 2        | Bob       | Alice    | New York City | New York   |       inner join will only capture personId2
+| 3        | null      | null     | Leetcode      | California |       right join will capture personId2 and personId3
++-----------+----------+----------+---------------+------------+
+```
+* Full outer join is not supported on MySQL, but supported on SQL server
+* MS SQL server:
+```
+/* Write your T-SQL query statement below */
+select Person.firstName, Person.lastName, Address.city, Address.state
+from Person
+left outer join Address
+on Person.personId = Address.personId
+```

@@ -43,3 +43,6 @@ Person table:
 
 * Explanation: a@b.com is repeated two times.
 ```
+
+# Solution: 
+* Similar problem: https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/
