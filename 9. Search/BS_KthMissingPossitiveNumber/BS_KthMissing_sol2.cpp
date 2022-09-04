@@ -1,6 +1,8 @@
+#include <vector>
+using namespace std;
 class Solution {
     public:
-    int findKthPositive(int[] arr, int k) {
+    int findKthPositive(int arr[], int k) {
         // [2, 3], k = 1, result = 1
         // [1, 3, 4] k = 1, result = 2
         // [3, 4] k = 1, result = 5
@@ -37,6 +39,5 @@ class Solution {
         
         int missingLeft = arr[left] - (left + 1);
         return arr[left] + (k - missingLeft);
-        
     }
-}
+};
