@@ -8,12 +8,12 @@ class Solution {
     public:
     int climbStairs(int n) {
         int counter = 0;
-        counter += climbStairs(0,n, 1) + climbStairs(0,n, 2);
+        counter += climbStairsRecursive(0,n, 1) + climbStairsRecursive(0,n, 2);
         cout<<"Result: "<<counter<<endl;
         return counter;
     }
 
-    int climbStairs(int startingStep, int endStep, int stepSize){
+    int climbStairsRecursive(int startingStep, int endStep, int stepSize){
         cout<<" -- start "<<startingStep<<" -- end "<<endStep<<" -- stepSize "<<stepSize<<endl;
         startingStep = startingStep + stepSize;
         cout<<"nextstep "<<startingStep<<endl;
@@ -23,7 +23,7 @@ class Solution {
         }
         else if (startingStep<endStep) {
 
-            return climbStairs(startingStep, endStep, 1) + climbStairs(startingStep, endStep, 2);
+            return climbStairsRecursive(startingStep, endStep, 1) + climbStairsRecursive(startingStep, endStep, 2);
         }
         else {
             cout<<"not reaching end"<<endl;

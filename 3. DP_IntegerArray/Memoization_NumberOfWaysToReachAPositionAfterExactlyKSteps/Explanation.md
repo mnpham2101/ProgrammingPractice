@@ -28,6 +28,40 @@ Output: 0
 It is impossible to reach position 5 from position 2 in exactly 10 steps.
  
 
-Constraints:
+# Constraints:
 
 1 <= startPos, endPos, k <= 1000
+
+# Solution 1: Topdown method with recursive call
+* Observe that the conditions to return valid steps are: 
+  ```
+  if ((startPos == endPos) &&
+      (turn == turnLimit)) {
+      return 1;                             // the number of way increase by 1
+  ```
+* Observe that no valid step is possible, return 0 when: 
+  ```
+  if (turn > turnLimit){
+      return 0;
+  }
+  ```
+* For other cases, we continue to traverse down the *decision tree* where `startPos = startPos+1` or `startPos = startPos -1` and increment the `turn` number. 
+  * Define the recursive function as: 
+  ```
+  int topDown(int startPos, int endPos, int turn, int turnLimit)
+  ```
+  * The result is the sum of calling recursive function topDown:
+  ```
+  return result = (topDown(startPos+1, endPos, turn+1, turnLimit) + 
+                topDown(startPos-1, endPos, turn+1, turnLimit)) % 1000000007;
+  ```
+# Solution 2: Optimize solution 1 with memoization. 
+* we realize that for some combination of `startPos` and `turn` the remaining turns would be the same, and thus returns a *valid path*, which is a path from startPos to endPos within the turn limits.
+  * create a cache array: `cache[startPos][turn]`
+* because the position could get negative while the index of array cannot, we compensate by extending the cache size to maximum turn limit
+   ```
+   startPos+=1200;
+   endPos+=1200;
+   ```
+## Complexity Analysis: 
+* The total possibility to traverse the decision tree is dept of `decision tree * 2 = total child branches`. Thus the Complexity is O(N^2) where N = K+1. Memoization reduce the time by not traversing every branch. 

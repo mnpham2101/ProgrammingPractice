@@ -9,11 +9,11 @@ class Solution {
     public:
     int climbStairs(int n) {
         vector<int> cache(n,0);
-        return climbStairs(1,n, cache) + climbStairs(2,n, cache);
+        return climbStairsRecursive(1,n, cache) + climbStairsRecursive(2,n, cache);
     }
 
 
-    int climbStairs(int startingStep, int endStep, vector<int> &cache){
+    int climbStairsRecursive(int startingStep, int endStep, vector<int> &cache){
         cout<<" -- start "<<startingStep<<" -- end "<<endStep<<endl;
 
         // base case 1
@@ -28,7 +28,7 @@ class Solution {
             }
             else {
                 // memoization, save cache
-                cache[startingStep] = climbStairs(startingStep+1, endStep, cache) + climbStairs(startingStep+2, endStep, cache);
+                cache[startingStep] = climbStairsRecursive(startingStep+1, endStep, cache) + climbStairsRecursive(startingStep+2, endStep, cache);
                 //Log
                 cout<<"cache["<<startingStep<<"]="<<cache[startingStep]<<" ";
                 cout<<endl;
