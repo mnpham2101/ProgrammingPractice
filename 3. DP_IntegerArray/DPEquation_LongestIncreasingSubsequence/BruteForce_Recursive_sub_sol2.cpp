@@ -2,13 +2,7 @@
 #include <vector>
 using namespace std;
 
-/*
-Rescursive solution:
-We must find all increasing subsequences and choose the longest one.
-To find all increasing subsequences:
-- For each position in the array, we have 2 option: (1) add the element into current subsequences and (2) ignore. For (1) the element must be strictly larger than the last element of current subsequence
-- So for each position, tree decision splits into 2 branches. We can caculate easily with rescursive implemetation.
-*/
+
 
 int solve(vector<int>& nums, int idx, int val) {
     /* Base case */
