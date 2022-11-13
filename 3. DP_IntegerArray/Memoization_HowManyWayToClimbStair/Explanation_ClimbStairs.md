@@ -59,8 +59,6 @@ Complexity = O(N) where n = heigh of the tree
 * *Bottom-up* implementations usually use an array, so we will use an array `dp[]` where `dp[i]` represents the number of ways to climb to the `i_th`
   step
 * One can reach n step in one of the two ways:
-
-
 1. Taking a single step from (i-1) step
 2. Taking a step of 2 from (i-2) step
 The total number of ways to reach n step is equal to *sum of ways of reaching (i-1) step and (i-2) step*:
