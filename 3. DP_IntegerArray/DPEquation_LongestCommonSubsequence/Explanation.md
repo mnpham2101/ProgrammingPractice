@@ -46,7 +46,7 @@ text1 and text2 consist of only lowercase English characters.
 * iterate through each subsequence of the first string and check whether or not it is also a subsequence of the second string. (the characters in 2nd string could be put in a hashmap with key-value). The value would indicate the order in which the characters appear in the 2nd string.
 * This will require exponential time to run. The number of subsequences in a string is up to 2^L , where L is the length of the string. This is because, for each character, we have two choices; it can either be in the subsequence or not in it. Duplicates characters reduce the number of unique subsequences a bit, although in the general case, it's still exponential.
 
-# Solution 2: Topdown
+# Solution 2: Top-down + memoization
 ## Approach: 
 * consider a decision tree where each node is pair of substrings from `text1` and `text2`. The first character of the substrings are compared, and could be used or wont be used in the child node. 
 * In order word, each state compares the 2 first characters of substrings from `text1`, and `text2`. 
@@ -57,8 +57,11 @@ text1 and text2 consist of only lowercase English characters.
 1. `state`: each state compares the first characters of the `substrings` of `Text1`, `Text2`
 2. `state variable`: `i` is index of first character in substring `Text1`; `j` is index of first character in substring of `text2`.
 3. `recurrance relation`: For top-down solution, we define recursive call `compareNext`, where:
-   * `ifCharactersMatch = 1 + compareNext(i,j)`     
-   * `ifCharactersDontMatch = max(compareNext(i+1,j), compare(i,j+1)`
+   * if characters match, `answer = 1 + compareNext(i,j)`     
+   * if characters dont match, `answer = max(compareNext(i+1,j), compare(i,j+1)`
    * ifCharactersMatch : in the next state, we removed the characters from both string and compare the next characters of both string. Thus we compare `Text1[i+1]` and `Text2[j+1]`
    * ifCharactersDontMatch: we removed a character from either string, and keep the other. The character is then compared to the next charact of the other string.. Thus we compare between `Text1[i+1]` and `Text2[j]` or `Text1[i]` and `Text2[j+1]` .
 4. `base case`: 
+   * return 0 when `i` **or** `j` is out-of-bound. i == text1.length() or j == text2.length(). It is because no more character on either string is available for comparison.
+
+# Solution 2: Bottom-up
