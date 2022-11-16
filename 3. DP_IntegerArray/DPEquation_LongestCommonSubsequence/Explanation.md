@@ -63,5 +63,7 @@ text1 and text2 consist of only lowercase English characters.
    * ifCharactersDontMatch: we removed a character from either string, and keep the other. The character is then compared to the next charact of the other string.. Thus we compare between `Text1[i+1]` and `Text2[j]` or `Text1[i]` and `Text2[j+1]` .
 4. `base case`: 
    * return 0 when `i` **or** `j` is out-of-bound. i == text1.length() or j == text2.length(). It is because no more character on either string is available for comparison.
+## Complexity analysis:
+
 
 # Solution 2: Bottom-up
