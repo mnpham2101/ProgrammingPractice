@@ -57,7 +57,6 @@ text1 and text2 consist of only lowercase English characters.
 1. `state`: each state compares the first characters of the `substrings` of `Text1`, `Text2`
 2. `state variable`: `i` is index of first character in substring `Text1`; `j` is index of first character in substring of `text2`.
 3. `recurrance relation`: For top-down solution, we define recursive call `compareNext`, where:
-<<<<<<< Updated upstream
    * if characters match, `answer = 1 + compareNext(i,j)`     
    * if characters dont match, `answer = max(compareNext(i+1,j), compare(i,j+1)`
    * ifCharactersMatch : in the next state, we removed the characters from both string and compare the next characters of both string. Thus we compare `Text1[i+1]` and `Text2[j+1]`
@@ -68,16 +67,3 @@ text1 and text2 consist of only lowercase English characters.
 
 
 # Solution 2: Bottom-up
-=======
-   * `ifCharactersMatch = 1 + compareNext(i,j)`     
-   * `ifCharactersDontMatch = max(compareNext(i+1,j), compareNext(i,j+1)`
-   * ifCharactersMatch : in the next state, we removed the characters from both string and compare the next characters of both string. Thus we compare `Text1[i+1]` and `Text2[j+1]`
-   * ifCharactersDontMatch: we removed a character from either string, and keep the other. The character is then compared to the next charact of the other string.. Thus we compare between `Text1[i+1]` and `Text2[j]` or `Text1[i]` and `Text2[j+1]` .
-4. `base case`: 
-   * since we have to compared every character of the 2 strings, we stop when `i == Text1.length()` and `j == Text2.length()`.
-   * we start at `i=0` and `j=0`.
-## Complexity Analysis:
-* Time complexity: O (M x N) since we have to run 2 recursive calls `compareNext(i+1,j)` M times and `compare(i,j+1)` N times.
-* Space complexity: O (M x N) if we use `cache[][]` with size `m x n`
-
->>>>>>> Stashed changes
