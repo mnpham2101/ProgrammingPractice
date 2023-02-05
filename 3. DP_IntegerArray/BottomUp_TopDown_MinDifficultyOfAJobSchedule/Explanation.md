@@ -43,5 +43,15 @@ The above diagram show some but not all paths of a decision tree. For each day, 
 
 ## Top down approach: 
 * Top down approach is similar to brute-force approach: it generates all possible cases and traverse the decision tree from top to bottom, left to right. 
-  * Traversing is implemented via recursive call, where each call returns a state calculation, and the input arguments are the state variable
+  * Traversing is implemented via *recursive calls*, where each call returns a state calculation, and the input arguments are the state variable
 * Top down approach is an improvement of brute-force approach: it use memorization to prevent traversing branches that has saved values.
+  * 2D array is used to stored the state result. Each array element is initialized to -1. 
+  * When the element is not -1, retrieve the previously stored result instead of making further recursive call.
+
+## Bottom-up approach: 
+* Bottom-up approach use DP equations instead of recursive calls.
+* DP equations are calculated in specific orders, implemented via for loops. 
+  * calculated the equation is the day progresses from day `1` to day `d` in outter for loop
+  * For each day, calculate the max difficulty for jobs from `startingIndex` to maximum of jobs for the day in inner for loop.
+
+## Monostack approach:
