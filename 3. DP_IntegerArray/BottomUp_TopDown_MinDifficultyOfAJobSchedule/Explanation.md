@@ -25,8 +25,23 @@ The total difficulty is 6 + 5 = 11
 Thus the minimum difficulty of a job schedule is 7
 ```
 
-## Top down approach: 
-* `state variables`:
-* `state`:
-* `recurrence relation`:
+## Preliminary analysis:
+Support we have jobDifficulty = [1 4 3 6 4 5 8], and 3 days following brute-force approach, a decision tree could be draw:
+
+![image info](./1.png)
+
+The above diagram show some but not all paths of a decision tree. For each day, the are a number of possible jobs, starting from the a *job index* that is dependent on previous day. The total job difficulty of anyday is the sum difficulty of all the *previous* days. The result is minimum all off possible paths; in other the minimum of job Difficulty of the last day. Thus we could come up with the following definitions:
+
+* `state`: the job Difficulty of each day, expressed as `Difficulty` array
+* `state variables`: the starting job index of that day and the current day
+* `recurrence relation`: 
+  * the jobs could have their indices from `starting index` to the maximum number of job for each day. 
+  * the Difficulty of each day is calculated as: 
+    `Difficulty[startingIndex, currentDay] = max(jobDifficulty[i, currentDay] + Difficulty[previousIndex, previousDay])` where `i` is from `startingIndex` to `i+ max number of jobs for each day`.
 * `base case`:
+  * Job Difficulty of day 1, starting from index 0 is: Difficulty[0,1] = jobDifficulty[0];
+
+## Top down approach: 
+* Top down approach is similar to brute-force approach: it generates all possible cases and traverse the decision tree from top to bottom, left to right. 
+  * Traversing is implemented via recursive call, where each call returns a state calculation, and the input arguments are the state variable
+* Top down approach is an improvement of brute-force approach: it use memorization to prevent traversing branches that has saved values.
