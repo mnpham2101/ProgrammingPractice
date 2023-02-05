@@ -57,17 +57,17 @@ We approach any DP problems by figuring out `state variable`, `state`, `base con
   * Therefore, `right = nums.size() - 1 - the total number of right elements that have been picked` or `right= nums.size() - 1 -( i - left)` 
   * Therefore, 2 `state variables` are needed: `i` and `left`.
  
-2. `state variable`: for top down approach, we use recursive call to generate the result from "decision tree". For example: 
+1. `state`: for top down approach, we use recursive call to generate the result from "decision tree". For example: 
   * each branch has 2 child branches where state variable changes as: `i++` and  `left++`,  `right--`
   * a 2D array size `m x m` is used to stored cache and thus optimized running time. 
-3. `relation recurrence`:
+1. `relation recurrence`:
   * for any state, we get `currentScore` by `multipliers[i]* nums[position]` where:
     * `position = left` if we pick a number from the left, the current position = the number of elements have been picked from the left, including current element
     * `position = right` if we pick a number from the right
   * after that, we can move to the next state, by either choosing another element from the left or from the right. Thus the next state variable is `i+1` and either `left+1` or `right-1`. 
     * if we pick a number from the left, make recursive call to: `nextScore = nextOperation(nums, multi, i+1, left+1, right)`   
     * if we pick a number from the right: `nextScore = nextOperation(nums, multi, i+1, left, right-1)`
-4. Base case: 
+1. Base case: 
 	* it is intuitive to see that the recursive call should stop if the number of operation i reaches the size of the `multiplier` array.
 	* when it happens, it should return 0 as there is no more element from the `nums` array.
 ## Complexity Analysis: 
@@ -86,11 +86,11 @@ We approach any DP problems by figuring out `state variable`, `state`, `base con
   * Therefore, `right = nums.size() - 1 - the total number of right elements that have been picked` or `right= nums.size() - 1 -( i - left)` 
   * Therefore, 2 `state variables` are needed: `i` and `left`.
   ![image info](./1.png)
-2. `state variable`: for bottom up approach, we use 2D array structure `DP[i][left]` to store the score gained in any state. 
+1. `state`: for bottom up approach, we use 2D array structure `DP[i][left]` to store the score gained in any state. 
   * the total number of operation is the size of `multiplier` array. 
   * the max number of elements have been picked from the left is also the max number of operation. 
   * Thus the size of `DP array` is `n x n`
-3. `relation recurrence`:
+1. `relation recurrence`:
   * for any state, we get `currentScore` by `multipliers[i]* nums[position]` where:
     * `position = left` if we pick a number from the left, the current position = the number of elements have been picked from the left, including current element
     * `position = right = nums.size() - 1 -( i - left)` if we pick a number from the right
