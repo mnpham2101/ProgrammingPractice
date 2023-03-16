@@ -30,16 +30,18 @@ Support we have jobDifficulty = [1 4 3 6 4 5 8], and 3 days following brute-forc
 
 ![image info](./1.png)
 
-The above diagram show some but not all paths of a decision tree. For each day, the are a number of possible jobs, starting from the a *job index* that is dependent on previous day. The total job difficulty of anyday is the sum difficulty of all the *previous* days. The result is minimum all off possible paths; in other the minimum of job Difficulty of the last day. Thus we could come up with the following definitions:
+The above diagram shows some but not all paths of a decision tree. For each day, there are a number of possible jobs, starting from the a *job index* that is dependent on previous day. The total job difficulty of anyday is the sum difficulty of all the *previous* days. The result is minimum all off possible paths, the minimum of job Difficulty of the last day. Thus we could come up with the following definitions:
 
 * `state`: the job Difficulty of each day, expressed as `Difficulty` array
-* `state variables`: the starting job index of that day and the current day
+* `state variables`: 
+  * the starting job index of that day 
+  * the current day
 * `recurrence relation`: 
   * the jobs could have their indices from `starting index` to the maximum number of job for each day. 
   * the Difficulty of each day is calculated as: 
     `Difficulty[startingIndex, currentDay] = max(jobDifficulty[i, currentDay] + Difficulty[previousIndex, previousDay])` where `i` is from `startingIndex` to `i+ max number of jobs for each day`.
 * `base case`:
-  * Job Difficulty of day 1, starting from index 0 is: Difficulty[0,1] = jobDifficulty[0];
+  * if day 0, starting from index 0 is: `Difficulty[0][1] = max(jobDifficulty.begin(), jobDifficulty.end())`;
 
 # Top down approach: 
 * Top down approach is similar to brute-force approach: it generates all possible cases and traverse the decision tree from top to bottom, left to right. 
