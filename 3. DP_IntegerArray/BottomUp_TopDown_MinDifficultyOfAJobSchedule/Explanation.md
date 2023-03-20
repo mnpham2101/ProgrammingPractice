@@ -41,7 +41,7 @@ The above diagram shows some but not all paths of a decision tree. For each day,
   * the Difficulty of each day is calculated as: 
     `Difficulty[startingIndex, currentDay] = max(jobDifficulty[i, currentDay] + Difficulty[previousIndex, previousDay])` where `i` is from `startingIndex` to `i+ max number of jobs for each day`.
 * `base case`:
-  * if day 0, starting from index 0 is: `Difficulty[0][1] = max(jobDifficulty.begin(), jobDifficulty.end())`;
+  * if `currentDay == maxDay`: the job Difficulty of the day if the maximum jobDifficulty of all remaining jobs. Thus we have: `Difficulty[currentDay][startingIndex] = max(jobDifficulty.at(startingIndex), jobDifficulty.end())`;
 
 # Top down approach: 
 * Top down approach is similar to brute-force approach: it generates all possible cases and traverse the decision tree from top to bottom, left to right. 
