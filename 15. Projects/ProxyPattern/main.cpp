@@ -1,14 +1,23 @@
-#include "proxy.h"
-#include "factory_proxy.h"
-#include "car.h"
+#include "shop_interface.h"
+#include "shop_proxy.h"
 
 int main()
 {
-    IProxy * factory = new FactoryProxy();
-    Car * car = new Car (factory);
-    car->build();
-    car->run();
-    Car * anotherCar = new Car (factory);
-    anotherCar->build();
-    car->run();
+    std::string requestProduct1 = "a doll";
+    IShop * myShopProxy = new ShopProxy();
+    // myShopProxy creates RealShop
+    myShopProxy->provideService(requestProduct1);
+    // myShopProxy already has RealShop, and can provide service.
+    std::string requestProduct2 = "a toy";
+    myShopProxy->provideService(requestProduct1);
+
+    // delete myShopProxy will delete RealShop and data saved in memory
+    delete myShopProxy;
+
+    // create new proxy
+    IShop * myShopProxy2 = new ShopProxy();
+    // myShopProxy has to create new RealShop again and reload data.
+    myShopProxy2->provideService(requestProduct1);
+
+    delete myShopProxy2;
 }
