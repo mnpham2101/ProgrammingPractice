@@ -179,7 +179,7 @@ fun main() {
   * an **interface** `StudentManagement` that provides **abstract properties** and **abstract function**.
   * an derive class `StudentClassManagement` that overrides the properties and functions of the interface.
   * 2 other derive classes `History` and `Computer` that delegate all of its public members to a specified object of type interface.
-    * becuase of delegation, all public functions of the interface `StudentManagement`, implemented by its derived class `StudentClassManagement` are included. 
+    * because of delegation, all public functions of the interface `StudentManagement`, implemented by its derived class `StudentClassManagement` are included as internal of `History` and `Computer`
 
 ```
 data class Student(val name: String , var id: Int ) {}
